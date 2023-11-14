@@ -1,0 +1,68 @@
+<%- include('../layouts/header', {title: 'Deporte List'}); -%>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="alert alert-success text-center">Sports list</h1>
+            </div>
+        </div>
+        <div class="row">
+            <form class="row g-3 align-items-center my-3" action="/deportes" method="get">
+                <div class="col-auto">
+                    <label for="search" class="col-form-label">Search</label>
+                </div>
+                <div class="col-auto">
+                  <input type="text" id="search" name="search" class="form-control" value="<%= typeof search !== 'undefined' ? search : '' %>">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-outline-secondary">Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">jugadores</th>
+                            
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% deportes.map( deporte => { %>
+                            <tr>
+                                <th scope="row"><%= deporte.id %></th>
+                                <td><%= deporte.name%></td>
+                                <td><%= deporte.jugadores %></td>
+              
+                                <td>
+                                    <form 
+                                    action="/deportes/delete/<%= deporte.id %>" 
+                                    method="post"
+                                    onsubmit="return confirm('Are you sure you want to delete this deporte?');"
+                                    >
+                                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-grid">
+                <a href="/deportes/create" class="btn btn-outline-secondary">
+                    Create a new Deporte
+                </a>
+            </div>
+        </div>
+    </div>
+
+<%- include('../layouts/footer'); -%>
+
+
+

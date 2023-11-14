@@ -1,0 +1,40 @@
+create <%- include('../layouts/header', {title: 'Create a new deporte'}); -%>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="alert alert-success text-center">Create a new Deporte</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <form action="/deportes" method="post" class="row">
+                    <div class="col-6">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                    </div>
+                    <div class="col-6">
+                        <label for="jugadores" class="form-label">jugadores</label>
+                        <input type="number" name="jugadores" id="jugadores" class="form-control" required>
+                    </div>
+                  
+                    <div class="col-12 d-grid mt-4">
+                        <button type="submit" class="btn btn-outline-success">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-grid mt-4">
+                <a href="/deportes" class="btn btn-outline-secondary">
+                    Back to Deportes list
+                </a>
+            </div>
+        </div>
+    </div>
+
+<%- include('../layouts/footer'); -%>
+
+
+
+
